@@ -9,5 +9,6 @@ router.get('/users/:id', getUserById);
 router.get('/users/:id/address', getAddressByIdUser);
 router.get('/users/:id/tasks', getTaskByUser);
 router.post('/users', createUser);
+router.put('/users/:id', );
 
 module.exports = router;

@@ -4,6 +4,7 @@ const Users = require('../models/users.models');
 const Tasks = require('../models/tasks.models');
 const Address = require('../models/addresses.models');
 const Categories = require('../models/categories.models');
+const TaskCategories = require('../models/taskcategories.models');
 const initModules = require('../models/initModels');
 
 // arreglos con la información que se va a plantar
@@ -29,11 +30,18 @@ const tasks = [
 ];
 
 const categories = [
-  {name: 'Personal'},
-  {name: 'Laboral'},
-  {name: 'Escolar'},
-  {name: 'Deporte'}
+  {name: 'Personal'}, // 1
+  {name: 'Laboral'}, // 2
+  {name: 'Escolar'}, // 3
+  {name: 'Deporte'} // 4
 ];
+
+const tcs = [
+  {taskId: 1, categoryId: 1},
+  {taskId: 1, categoryId: 2},
+  {taskId: 2, categoryId: 1},
+  {taskId: 2, categoryId: 3}
+]
 
 db.sync({ force: true }).then(async () => {
   console.log("Iniciando plantación");
@@ -49,4 +57,7 @@ db.sync({ force: true }).then(async () => {
   setTimeout(() => {
     tasks.forEach((task) => Tasks.create(task));
   }, 700);
+  setTimeout(() => {
+    tcs.forEach((tc) => TaskCategories.create(tc));
+  }, 800);
 });
